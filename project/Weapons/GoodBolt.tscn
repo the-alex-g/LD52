@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
+[ext_resource path="res://Weapons/ParticleCircle.png" type="Texture" id=1]
 [ext_resource path="res://Weapons/Bolt.gd" type="Script" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 8.0
+radius = 16.0
+
+[sub_resource type="Gradient" id=2]
+colors = PoolColorArray( 0.985229, 1, 0.527344, 1, 0.839844, 0.83664, 0.757828, 1 )
 
 [node name="GoodBolt" type="Area2D"]
 collision_layer = 16
@@ -15,3 +19,17 @@ bolt_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 shape = SubResource( 1 )
 
 [node name="Tween" type="Tween" parent="."]
+
+[node name="ExplosionParticles" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 32
+one_shot = true
+speed_scale = 3.0
+explosiveness = 0.5
+randomness = 0.5
+texture = ExtResource( 1 )
+direction = Vector2( 0, 0 )
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 16.0
+color_ramp = SubResource( 2 )

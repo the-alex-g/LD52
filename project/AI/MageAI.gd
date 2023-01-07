@@ -39,7 +39,7 @@ func _get_new_state()->void:
 func _process_magic_timer()->void:
 	if _is_target_in_range() and _magic_cooldown_timer.is_stopped() and target != null:
 		_magic_cooldown_timer.start()
-	elif not _is_target_in_range() or target == null:
+	if not _is_target_in_range() or target == null:
 		_magic_cooldown_timer.stop()
 
 

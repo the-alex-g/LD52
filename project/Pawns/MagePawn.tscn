@@ -13,7 +13,7 @@ magic_cooldown_time = 1.5
 
 [node name="MagicCooldownTimer" type="Timer" parent="." index="4"]
 
-[node name="Sprite" parent="." index="5"]
-animation = "default"
+[node name="Halo" parent="." index="6"]
+frame = 3
 
 [connection signal="timeout" from="MagicCooldownTimer" to="." method="_on_MagicCooldownTimer_timeout"]

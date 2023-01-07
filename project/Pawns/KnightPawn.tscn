@@ -12,8 +12,5 @@ armor = 3
 strength = 4
 frame_path = "res://Pawns/Spriteframes/KnightFrames.tres"
 
-[node name="Sprite" parent="." index="4"]
-animation = "default"
-
 [node name="Halo" parent="." index="5"]
-frame = 2
+frame = 3

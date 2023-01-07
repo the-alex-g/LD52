@@ -32,7 +32,7 @@ func _resolve_endgame(message:String)->void:
 	_endgame_panel.show()
 	_endgame_label.text = message
 	PawnHandler.reset()
-	get_tree().paused = false
+	get_tree().paused = true
 
 
 func _on_Button_pressed()->void:

@@ -9,6 +9,8 @@ onready var _standard_spawn_point : Position2D = $StandardSpawnPath/PathFollow2D
 func _ready()->void:
 	randomize()
 	
+	Jukebox.main_loop.play()
+	
 	for _i in 64:
 		_path_follow.unit_offset = randf()
 		_path_follow.rotation = randf() * TAU

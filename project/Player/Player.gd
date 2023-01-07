@@ -38,7 +38,7 @@ func _shoot()->void:
 	_can_shoot = false
 	_cooldown_timer.start(cooldown_time)
 	
-	var target_position := global_position + (Vector2.RIGHT * 300).rotated(get_global_mouse_position().angle_to_point(global_position))
+	var target_position := global_position + (Vector2.RIGHT * 200).rotated(get_global_mouse_position().angle_to_point(global_position))
 	
 	var bolt = preload("res://Weapons/DarkBolt.tscn").instance()
 	bolt.to = target_position
