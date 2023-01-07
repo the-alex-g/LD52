@@ -9,17 +9,11 @@ onready var _standard_spawn_point : Position2D = $StandardSpawnPath/PathFollow2D
 func _ready()->void:
 	randomize()
 	
-	for child in _enemy_container.get_children():
-		child.target = _player
-		child.player = _player
-	
 	for _i in 64:
 		_path_follow.unit_offset = randf()
 		_path_follow.rotation = randf() * TAU
 		var pawn = preload("res://Pawns/StandardPawn.tscn").instance()
 		pawn.position = _standard_spawn_point.global_position
-		pawn.target = _player
-		pawn.player = _player
 		_enemy_container.add_child(pawn)
 
 

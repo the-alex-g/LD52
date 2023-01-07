@@ -10,6 +10,7 @@ var _can_shoot := true
 var good := false
 
 onready var _cooldown_timer : Timer = $AttackCooldownTimer
+onready var _sprite : AnimatedSprite = $AnimatedSprite
 
 
 func _physics_process(delta:float)->void:
@@ -17,6 +18,12 @@ func _physics_process(delta:float)->void:
 		Input.get_axis("left", "right"),
 		Input.get_axis("up", "down")
 	).normalized()
+	
+	if direction != Vector2.ZERO:
+		_sprite.play("Run")
+		_sprite.rotation = direction.angle()
+	else:
+		_sprite.play("Idle")
 	
 	#rotation = direction.angle()
 	
@@ -43,7 +50,3 @@ func _shoot()->void:
 
 func hit(damage:int)->void:
 	print(damage)
-
-
-func _draw()->void:
-	draw_circle(Vector2.ZERO, 16, Color.black)
