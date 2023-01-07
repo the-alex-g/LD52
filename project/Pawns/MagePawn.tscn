@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Pawns/Pawn.tscn" type="PackedScene" id=1]
+[ext_resource path="res://AI/MageAI.gd" type="Script" id=2]
+
+[node name="MagePawn" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+attack_damage = 6
+health = 20
+strength = 8
+magic_cooldown_time = 1.5
+
+[node name="MagicCooldownTimer" type="Timer" parent="." index="4"]
+
+[connection signal="timeout" from="MagicCooldownTimer" to="." method="_on_MagicCooldownTimer_timeout"]

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Weapons/Bolt.gd" type="Script" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 8.0
+
+[node name="DarkBolt" type="Area2D"]
+collision_layer = 16
+collision_mask = 2
+script = ExtResource( 3 )
+bolt_color = Color( 0.360784, 0, 0.470588, 1 )
+
+[node name="TargetRegion" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Tween" type="Tween" parent="."]

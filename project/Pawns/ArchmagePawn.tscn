@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Pawns/MagePawn.tscn" type="PackedScene" id=1]
+
+[node name="ArchmagePawn" instance=ExtResource( 1 )]
+attack_cooldown_time = 1.0
+attack_damage = 15
+health = 50
+armor = 4
+strength = 16
