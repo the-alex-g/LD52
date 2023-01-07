@@ -5,6 +5,8 @@ onready var _endgame_label : Label = $EndGamePanel/VBoxContainer/Label
 onready var _endgame_panel : Panel = $EndGamePanel
 onready var _health_bar : ProgressBar = $PlayerHealth
 
+var _game_over := false
+
 
 func _ready()->void:
 	_victory_progress.max_value = PawnHandler.max_strength
@@ -19,14 +21,14 @@ func _process(_delta:float)->void:
 	
 
 func _check_for_endgame()->void:
-	if PawnHandler.dark_strength == PawnHandler.max_strength and not _endgame_panel.visible:
+	if PawnHandler.dark_strength == PawnHandler.max_strength and not _game_over:
 		_resolve_endgame("You win")
-	if PawnHandler.player_health <= 0 and not _endgame_label.visible:
+	if PawnHandler.player_health <= 0 and not _game_over:
 		_resolve_endgame("Thou hast losethed")
 
 
 func _resolve_endgame(message:String)->void:
-	print("endgame: ", message)
+	_game_over = true
 	_endgame_panel.show()
 	_endgame_label.text = message
 	PawnHandler.reset()

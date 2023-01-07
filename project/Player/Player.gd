@@ -38,8 +38,10 @@ func _shoot()->void:
 	_can_shoot = false
 	_cooldown_timer.start(cooldown_time)
 	
+	var target_position := global_position + (Vector2.RIGHT * 300).rotated(get_global_mouse_position().angle_to_point(global_position))
+	
 	var bolt = preload("res://Weapons/DarkBolt.tscn").instance()
-	bolt.to = get_global_mouse_position()
+	bolt.to = target_position
 	bolt.from = global_position
 	bolt.damage = lerp(max_damage, min_damage, 1 - PawnHandler.get_dark_strength())
 	get_parent().add_child(bolt)
