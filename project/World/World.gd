@@ -15,8 +15,3 @@ func _ready()->void:
 		var pawn = preload("res://Pawns/StandardPawn.tscn").instance()
 		pawn.position = _standard_spawn_point.global_position
 		_enemy_container.add_child(pawn)
-
-
-func _process(_delta:float)->void:
-	if PawnHandler.dark_strength == PawnHandler.max_strength:
-		print("win")

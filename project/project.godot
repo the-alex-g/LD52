@@ -40,6 +40,10 @@ config/icon="res://icon.png"
 
 PawnHandler="*res://World/PawnHandler.gd"
 
+[display]
+
+window/size/width=600
+
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
