@@ -22,9 +22,9 @@ func _process(_delta:float)->void:
 
 func _check_for_endgame()->void:
 	if PawnHandler.dark_strength == PawnHandler.max_strength and not _game_over:
-		_resolve_endgame("You win")
+		_resolve_endgame("You win! \nYou have harvested the intelligence of all the Grey Folk!")
 	if PawnHandler.player_health <= 0 and not _game_over:
-		_resolve_endgame("Thou hast losethed")
+		_resolve_endgame("You lose! \nThe Grey Folk have chased you out of their settlement.")
 
 
 func _resolve_endgame(message:String)->void:

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/PlayerIdle.png-41989b53fa39878c88c9d3f24b165d24.stex"
+path="res://.import/Cultist.png-3d00acd5909b0fb5f9e8128ec2a0b243.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/PlayerIdle.png"
-dest_files=[ "res://.import/PlayerIdle.png-41989b53fa39878c88c9d3f24b165d24.stex" ]
+source_file="res://Player/Cultist.png"
+dest_files=[ "res://.import/Cultist.png-3d00acd5909b0fb5f9e8128ec2a0b243.stex" ]
 
 [params]
 

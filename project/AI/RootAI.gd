@@ -4,7 +4,7 @@ extends KinematicBody2D
 enum ActionState {STATIONARY, ADVANCE, FLEE, WANDER}
 
 export var speed := 75.0
-export var sense_range := 500.0
+export var sense_range := 300.0
 export var attack_cooldown_time := 1.5
 export var attack_damage := 1 setget , _get_attack_damage
 export var health := 9
