@@ -23,11 +23,17 @@ _global_script_classes=[ {
 "class": "RootAI",
 "language": "GDScript",
 "path": "res://AI/RootAI.gd"
+}, {
+"base": "AudioStreamPlayer2D",
+"class": "VariableStreamPlayer",
+"language": "GDScript",
+"path": "res://Sound/VariableStreamPlayer.gd"
 } ]
 _global_script_class_icons={
 "MageAI": "",
 "Player": "",
-"RootAI": ""
+"RootAI": "",
+"VariableStreamPlayer": ""
 }
 
 [application]

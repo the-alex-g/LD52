@@ -1,8 +1,10 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Player/PlayerIdle.png" type="Texture" id=2]
 [ext_resource path="res://Player/PlayerRun.png" type="Texture" id=3]
+[ext_resource path="res://Sound/VariableStreamPlayer.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Sound/SFX/PlayerHit.wav" type="AudioStream" id=5]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 16.0
@@ -77,3 +79,6 @@ zoom = Vector2( 0.75, 0.75 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 8 )
 animation = "Idle"
+
+[node name="HitSound" parent="." instance=ExtResource( 4 )]
+stream = ExtResource( 5 )

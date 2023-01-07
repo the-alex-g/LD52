@@ -28,6 +28,7 @@ func _ready()->void:
 	for body in get_overlapping_bodies():
 		if body.has_method("hit"):
 			body.hit(damage)
+	$ExplosionSound.play()
 	
 	$ExplosionParticles.emitting = true
 	# warning-ignore:return_value_discarded

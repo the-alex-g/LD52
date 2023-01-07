@@ -52,3 +52,4 @@ func _shoot()->void:
 
 func hit(damage:int)->void:
 	PawnHandler.player_health -= damage
+	$HitSound.play()
