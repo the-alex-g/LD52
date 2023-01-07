@@ -3,8 +3,8 @@ extends KinematicBody2D
 
 export var speed := 210.0
 export var cooldown_time := 1.0
-export var min_damage := 100
-export var max_damage := 200
+export var min_damage := 7
+export var max_damage := 20
 
 var _can_shoot := true
 var good := false
@@ -49,4 +49,4 @@ func _shoot()->void:
 
 
 func hit(damage:int)->void:
-	print(damage)
+	PawnHandler.player_health -= damage

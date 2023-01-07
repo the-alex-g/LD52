@@ -332,7 +332,6 @@ _data = {
 script = ExtResource( 2 )
 
 [node name="Floor" type="Sprite" parent="."]
-modulate = Color( 0.756863, 0.756863, 0.756863, 1 )
 texture = ExtResource( 8 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 2304, 2304 )
@@ -347,6 +346,7 @@ tile_data = PoolIntArray( -2359333, 0, 1, -2359332, 0, 65538, -2359331, 0, 65538
 curve = SubResource( 35 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="StandardSpawnPath"]
+position = Vector2( -512, -1024 )
 rotate = false
 
 [node name="StandardSpawnPoint" type="Position2D" parent="StandardSpawnPath/PathFollow2D"]
@@ -356,27 +356,35 @@ position = Vector2( 96, 0 )
 
 [node name="KnightPawn" parent="Enemies" instance=ExtResource( 3 )]
 position = Vector2( -384, 96 )
+speed = 75.0
 
 [node name="KnightPawn2" parent="Enemies" instance=ExtResource( 3 )]
 position = Vector2( -384, -128 )
+speed = 75.0
 
 [node name="KnightPawn3" parent="Enemies" instance=ExtResource( 3 )]
 position = Vector2( -96, 384 )
+speed = 75.0
 
 [node name="KnightPawn4" parent="Enemies" instance=ExtResource( 3 )]
 position = Vector2( 96, 384 )
+speed = 75.0
 
 [node name="KnightPawn5" parent="Enemies" instance=ExtResource( 3 )]
 position = Vector2( 384, 96 )
+speed = 75.0
 
 [node name="KnightPawn6" parent="Enemies" instance=ExtResource( 3 )]
 position = Vector2( 384, -96 )
+speed = 75.0
 
 [node name="KnightPawn7" parent="Enemies" instance=ExtResource( 3 )]
 position = Vector2( -96, -384 )
+speed = 75.0
 
 [node name="KnightPawn8" parent="Enemies" instance=ExtResource( 3 )]
 position = Vector2( 96, -384 )
+speed = 75.0
 
 [node name="MagePawn" parent="Enemies" instance=ExtResource( 4 )]
 position = Vector2( -416, 0 )
@@ -391,6 +399,7 @@ position = Vector2( 416, 0 )
 position = Vector2( 0, -416 )
 
 [node name="ArchmagePawn" parent="Enemies" instance=ExtResource( 1 )]
+frame_path = "res://Pawns/Spriteframes/PawnFrames.tres"
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
 position = Vector2( 0, 864 )

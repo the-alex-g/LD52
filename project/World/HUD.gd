@@ -1,17 +1,36 @@
 extends CanvasLayer
 
 onready var _victory_progress : ProgressBar = $ProgressBar
+onready var _endgame_label : Label = $EndGamePanel/VBoxContainer/Label
+onready var _endgame_panel : Panel = $EndGamePanel
+onready var _health_bar : ProgressBar = $PlayerHealth
 
 
 func _ready()->void:
 	_victory_progress.max_value = PawnHandler.max_strength
+	_health_bar.max_value = PawnHandler.player_health
 
 
 func _process(_delta:float)->void:
 	_victory_progress.value = PawnHandler.dark_strength
-	if PawnHandler.dark_strength == PawnHandler.max_strength and not $EndGamePanel.visible:
-		$EndGamePanel.show()
-		get_tree().paused = true
+	_health_bar.value = PawnHandler.player_health
+	
+	_check_for_endgame()
+	
+
+func _check_for_endgame()->void:
+	if PawnHandler.dark_strength == PawnHandler.max_strength and not _endgame_panel.visible:
+		_resolve_endgame("You win")
+	if PawnHandler.player_health <= 0 and not _endgame_label.visible:
+		_resolve_endgame("Thou hast losethed")
+
+
+func _resolve_endgame(message:String)->void:
+	print("endgame: ", message)
+	_endgame_panel.show()
+	_endgame_label.text = message
+	PawnHandler.reset()
+	get_tree().paused = false
 
 
 func _on_Button_pressed()->void:

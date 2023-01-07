@@ -42,6 +42,7 @@ step = 1.0
 percent_visible = false
 
 [node name="EndGamePanel" type="Panel" parent="."]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -80,6 +81,14 @@ margin_top = 42.0
 margin_right = 83.0
 margin_bottom = 62.0
 text = "Main Menu"
+
+[node name="PlayerHealth" type="ProgressBar" parent="."]
+anchor_right = 1.0
+margin_left = 1.0
+margin_top = 48.0
+margin_right = 1.0
+margin_bottom = 62.0
+step = 1.0
 
 [connection signal="pressed" from="EndGamePanel/VBoxContainer/PlayAgain" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="EndGamePanel/VBoxContainer/MainMenu" to="." method="_on_MainMenu_pressed"]

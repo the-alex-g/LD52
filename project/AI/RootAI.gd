@@ -3,13 +3,14 @@ extends KinematicBody2D
 
 enum ActionState {STATIONARY, ADVANCE, FLEE, WANDER}
 
-export var speed := 150.0
+export var speed := 75.0
 export var sense_range := 500.0
 export var attack_cooldown_time := 1.5
 export var attack_damage := 1 setget , _get_attack_damage
 export var health := 9
 export var armor := 0
 export var strength := 1
+export var frame_path := "res://Pawns/Spriteframes/PawnFrames.tres"
 
 var _state = ActionState.WANDER
 var target : Node2D
@@ -18,10 +19,12 @@ export var good := true setget _set_good
 
 onready var _cooldown_timer : Timer = $AttackCooldownTimer
 onready var _attack_area : Area2D = $AttackArea
+onready var _sprite : AnimatedSprite = $Sprite
 
 
 func _ready()->void:
-	_cooldown_timer.wait_time = attack_cooldown_time
+	_sprite.frames = load(frame_path)
+	_cooldown_timer.wait_time = attack_cooldown_time / 2
 	_set_good(good)
 
 
@@ -44,6 +47,8 @@ func _physics_process(delta:float)->void:
 
 func _stationary()->void:
 	_point_towards_target()
+	if _sprite.animation != "Attack":
+		_sprite.play("Idle")
 
 
 func _wander(delta:float)->void:
@@ -70,6 +75,8 @@ func _point_towards_target()->void:
 
 
 func _move(delta)->void:
+	if _sprite.animation != "Attack":
+		_sprite.play("Run")
 	var direction := Vector2.RIGHT.rotated(rotation)
 	# warning-ignore:return_value_discarded
 	move_and_collide(direction * speed * delta)
@@ -101,6 +108,7 @@ func _on_AttackArea_body_exited(_body:Node2D)->void:
 func _on_AttackCooldownTimer_timeout()->void:
 	for body in _attack_area.get_overlapping_bodies():
 		body.hit(_get_attack_damage())
+		_sprite.play("Attack")
 		target = null
 		_get_new_target()
 
@@ -111,6 +119,13 @@ func _on_PawnSenseArea_body_entered(_body:Node2D)->void:
 
 func _set_good(value:bool)->void:
 	good = value
+	
+	if not good:
+		modulate = Color(0.9, 0.5, 0.9, 1)
+		$Halo.show()
+	else:
+		modulate = Color.white
+		$Halo.hide()
 	
 	_get_new_target()
 	
@@ -190,5 +205,6 @@ func _get_attack_damage()->int:
 	return lerp(attack_damage, attack_damage * 2, PawnHandler.get_dark_strength())
 
 
-func _draw()->void:
-	draw_circle(Vector2.ZERO, 16, Color.blue if good else Color.red)
+func _on_Sprite_animation_finished()->void:
+	if _sprite.animation == "Attack":
+		_sprite.play("Idle")

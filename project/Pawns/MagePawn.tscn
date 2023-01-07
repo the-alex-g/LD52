@@ -8,8 +8,12 @@ script = ExtResource( 2 )
 attack_damage = 6
 health = 20
 strength = 8
+frame_path = "res://Pawns/Spriteframes/MageFrames.tres"
 magic_cooldown_time = 1.5
 
 [node name="MagicCooldownTimer" type="Timer" parent="." index="4"]
+
+[node name="Sprite" parent="." index="5"]
+animation = "default"
 
 [connection signal="timeout" from="MagicCooldownTimer" to="." method="_on_MagicCooldownTimer_timeout"]

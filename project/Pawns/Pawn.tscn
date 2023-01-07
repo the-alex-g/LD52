@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://AI/RootAI.gd" type="Script" id=1]
+[ext_resource path="res://Pawns/Spriteframes/PawnFrames.tres" type="SpriteFrames" id=2]
+[ext_resource path="res://Pawns/DarkHalo.png" type="Texture" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 16.0
@@ -9,6 +11,30 @@ radius = 16.0
 
 [sub_resource type="CircleShape2D" id=3]
 radius = 200.0
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 3 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 32, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 3 )
+region = Rect2( 32, 32, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=18]
+animations = [ {
+"frames": [ SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [node name="Pawn" type="KinematicBody2D"]
 collision_layer = 2
@@ -35,7 +61,18 @@ shape = SubResource( 3 )
 
 [node name="AttackCooldownTimer" type="Timer" parent="."]
 
+[node name="Sprite" type="AnimatedSprite" parent="."]
+frames = ExtResource( 2 )
+playing = true
+
+[node name="Halo" type="AnimatedSprite" parent="."]
+position = Vector2( 2, 0 )
+frames = SubResource( 18 )
+frame = 2
+playing = true
+
 [connection signal="body_entered" from="AttackArea" to="." method="_on_AttackArea_body_entered"]
 [connection signal="body_exited" from="AttackArea" to="." method="_on_AttackArea_body_exited"]
 [connection signal="body_entered" from="PawnSenseArea" to="." method="_on_PawnSenseArea_body_entered"]
 [connection signal="timeout" from="AttackCooldownTimer" to="." method="_on_AttackCooldownTimer_timeout"]
+[connection signal="animation_finished" from="Sprite" to="." method="_on_Sprite_animation_finished"]

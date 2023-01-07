@@ -1,11 +1,19 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Pawns/Pawn.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Pawns/KnightPawn.gd" type="Script" id=2]
 
 [node name="KnightPawn" instance=ExtResource( 1 )]
-speed = 100.0
-attack_cooldown_time = 1.0
-attack_damage = 5
+script = ExtResource( 2 )
+speed = 80.0
+attack_damage = 6
 health = 40
 armor = 3
 strength = 4
+frame_path = "res://Pawns/Spriteframes/KnightFrames.tres"
+
+[node name="Sprite" parent="." index="4"]
+animation = "default"
+
+[node name="Halo" parent="." index="5"]
+frame = 2

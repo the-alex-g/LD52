@@ -41,4 +41,5 @@ func _process(_delta:float)->void:
 
 
 func _draw()->void:
-	draw_line(from, to, bolt_color, 4.0)
+	draw_line(from, to, Color.black, 4.0)
+	draw_line(from, to, bolt_color, 3.0)

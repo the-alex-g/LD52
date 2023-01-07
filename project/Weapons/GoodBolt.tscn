@@ -9,7 +9,7 @@ radius = 8.0
 collision_layer = 16
 collision_mask = 12
 script = ExtResource( 3 )
-bolt_color = Color( 1, 0.968627, 0.552941, 1 )
+bolt_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 
 [node name="TargetRegion" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
