@@ -22,26 +22,28 @@ func _process(_delta:float)->void:
 
 func _check_for_endgame()->void:
 	if PawnHandler.dark_strength == PawnHandler.max_strength and not _game_over:
-		_resolve_endgame("You win! \nYou have harvested the intelligence of all the Grey Folk!")
+		_resolve_endgame("You win!", "You have harvested the intelligence of all the Grey Folk!")
 	if PawnHandler.player_health <= 0 and not _game_over:
-		_resolve_endgame("You lose! \nThe Grey Folk have chased you out of their settlement.")
+		_resolve_endgame("You lose!", "The Grey Folk have chased you out of their settlement.")
 
 
-func _resolve_endgame(message:String)->void:
+func _resolve_endgame(outcome:String, message:String)->void:
 	_game_over = true
 	_endgame_panel.show()
-	_endgame_label.text = message
-	PawnHandler.reset()
+	_endgame_label.text = outcome
+	$EndGamePanel/VBoxContainer/FlavorText.text = message
 	get_tree().paused = true
 
 
 func _on_Button_pressed()->void:
 	get_tree().paused = false
+	PawnHandler.reset()
 	# warning-ignore:return_value_discarded
 	get_tree().change_scene("res://World/World.tscn")
 
 
 func _on_MainMenu_pressed()->void:
 	get_tree().paused = false
+	PawnHandler.reset()
 	# warning-ignore:return_value_discarded
 	get_tree().change_scene("res://Menu/MainMenu.tscn")

@@ -48,6 +48,14 @@ text = "You WIn"
 align = 1
 autowrap = true
 
+[node name="FlavorText" type="Label" parent="EndGamePanel/VBoxContainer"]
+margin_top = 196.0
+margin_right = 490.0
+margin_bottom = 236.0
+text = "You WIn"
+align = 1
+autowrap = true
+
 [node name="PlayAgain" type="Button" parent="EndGamePanel/VBoxContainer"]
 margin_top = 240.0
 margin_right = 490.0
