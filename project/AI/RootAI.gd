@@ -160,18 +160,26 @@ func hit(damage:int)->void:
 
 func _get_new_state()->void:
 	if good:
-		match randi() % 3:
-			0:
-				_state = ActionState.FLEE
-			1:
-				_state = ActionState.ADVANCE
-			2:
-				_state = ActionState.WANDER
+		_get_good_state()
 	else:
-		if target != null:
+		_get_bad_state()
+
+
+func _get_good_state()->void:
+	match randi() % 3:
+		0:
+			_state = ActionState.FLEE
+		1:
 			_state = ActionState.ADVANCE
-		else:
+		2:
 			_state = ActionState.WANDER
+
+
+func _get_bad_state()->void:
+	if target != null:
+		_state = ActionState.ADVANCE
+	else:
+		_state = ActionState.WANDER
 
 
 func _get_new_target()->void:

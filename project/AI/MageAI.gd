@@ -22,18 +22,19 @@ func _stationary()->void:
 	_process_magic_timer()
 
 
-func _get_new_state()->void:
-	if good:
-		match randi() % 5:
-			0,1,2,3:
-				_state = ActionState.STATIONARY
-			4:
-				_state = ActionState.WANDER
-	else:
-		if target == null:
-			_state = ActionState.WANDER
-		else:
+func _get_good_state()->void:
+	match randi() % 5:
+		0,1,2,3:
 			_state = ActionState.STATIONARY
+		4:
+			_state = ActionState.WANDER
+
+
+func _get_bad_state()->void:
+	if target == null:
+		_state = ActionState.WANDER
+	else:
+		_state = ActionState.STATIONARY
 
 
 func _process_magic_timer()->void:
