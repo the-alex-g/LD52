@@ -1,7 +1,7 @@
 class_name Player
 extends KinematicBody2D
 
-export var speed := 210.0
+export var speed := 200.0
 export var cooldown_time := 1.0
 export var shield_cooldown_time := 4.0
 export var heal_cooldown_time := 4.0
@@ -85,5 +85,6 @@ func _heal()->void:
 
 
 func hit(damage:int)->void:
-	PawnHandler.player_health -= damage
-	$HitSound.play()
+	if damage < 0:
+		PawnHandler.player_health += damage
+		$HitSound.play()

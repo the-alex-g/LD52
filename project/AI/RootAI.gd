@@ -143,7 +143,7 @@ func _set_good(value:bool)->void:
 
 func hit(damage:int)->void:
 	# warning-ignore:narrowing_conversion
-	damage = max(1, damage - armor) * (1 if good else -1)
+	damage = max(1, abs(damage) - armor) * sign(damage)
 	health -= damage
 	
 	if health <= 0 and good:
@@ -155,6 +155,9 @@ func hit(damage:int)->void:
 	elif health > 0 and not good:
 		PawnHandler.dark_strength -= strength
 		_set_good(true)
+	
+	if abs(health) > _max_health:
+		health = _max_health * sign(health)
 
 
 func _get_new_state()->void:
@@ -209,7 +212,7 @@ func _get_new_target()->void:
 
 func _get_attack_damage()->int:
 	if good:
-		return lerp(attack_damage, attack_damage * 2, 1.0 - PawnHandler.get_dark_strength())
+		return lerp(attack_damage, attack_damage * 2, 1.0 - PawnHandler.get_dark_strength()) * -1
 	return lerp(attack_damage, attack_damage * 2, PawnHandler.get_dark_strength())
 
 

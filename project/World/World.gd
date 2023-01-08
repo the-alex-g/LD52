@@ -23,7 +23,9 @@ func _ready()->void:
 
 
 func _on_PawnHandler_release_pawn()->void:
-	for pawn in _enemy_container.get_children():
-		if not pawn.good:
-			pawn.release()
-			break
+	for x in 4:
+		if PawnHandler.dark_strength > 0:
+			for pawn in _enemy_container.get_children():
+				if not pawn.good:
+					pawn.release()
+					break

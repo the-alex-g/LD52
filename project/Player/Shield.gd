@@ -15,7 +15,7 @@ func _ready()->void:
 
 
 func hit(damage:int)->void:
-	health -= damage
+	health -= abs(damage)
 	
 	if health <= 0:
 		$CollisionPolygon2D.disabled = true
