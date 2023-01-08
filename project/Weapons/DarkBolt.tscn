@@ -13,7 +13,7 @@ colors = PoolColorArray( 0.715904, 0, 0.748047, 1, 0, 0, 0, 1 )
 
 [node name="DarkBolt" type="Area2D"]
 collision_layer = 16
-collision_mask = 2
+collision_mask = 34
 script = ExtResource( 3 )
 bolt_color = Color( 0.360784, 0, 0.470588, 1 )
 

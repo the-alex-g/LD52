@@ -6,7 +6,7 @@ var player_health := 50
 
 
 func get_dark_strength()->float:
-	return pow(float(dark_strength) / max_strength, 2)
+	return (float(dark_strength) / max_strength)
 
 
 func reset()->void:

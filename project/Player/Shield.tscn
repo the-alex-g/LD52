@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Player/Shield.png" type="Texture" id=1]
+[ext_resource path="res://Player/Shield.gd" type="Script" id=2]
+
+[node name="Shield" type="StaticBody2D"]
+collision_layer = 33
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( 48, 0, 48, -16, 16, -48, -16, -48, -48, -16, -48, 0, -46, 0, -46, -15, -16, -46, 15, -46, 46, -15, 46, 0 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+offset = Vector2( 0, -24 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
