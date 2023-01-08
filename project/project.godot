@@ -39,7 +39,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Mind Harvest"
-run/main_scene="res://Menu/MainMenu.tscn"
+run/main_scene="res://Menu/Splashscreen.tscn"
 config/icon="res://icon.png"
 
 [audio]
