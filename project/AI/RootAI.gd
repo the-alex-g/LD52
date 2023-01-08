@@ -151,7 +151,6 @@ func hit(damage:int)->void:
 		if target is Player:
 			target = null
 		_set_good(false)
-		$TurnBadSound.play()
 	
 	elif health > 0 and not good:
 		PawnHandler.dark_strength -= strength

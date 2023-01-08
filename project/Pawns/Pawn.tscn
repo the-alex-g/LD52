@@ -1,10 +1,8 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://AI/RootAI.gd" type="Script" id=1]
 [ext_resource path="res://Pawns/Spriteframes/PawnFrames.tres" type="SpriteFrames" id=2]
 [ext_resource path="res://Pawns/DarkHalo.png" type="Texture" id=3]
-[ext_resource path="res://Sound/VariableStreamPlayer.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Sound/SFX/EnemySwap.wav" type="AudioStream" id=5]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 16.0
@@ -70,13 +68,8 @@ playing = true
 [node name="Halo" type="AnimatedSprite" parent="."]
 position = Vector2( 2, 0 )
 frames = SubResource( 18 )
+frame = 1
 playing = true
-
-[node name="TurnBadSound" parent="." instance=ExtResource( 4 )]
-stream = ExtResource( 5 )
-volume_db = 12.0
-pitch_variance = 0.2
-volume_variance = 2.0
 
 [connection signal="body_entered" from="AttackArea" to="." method="_on_AttackArea_body_entered"]
 [connection signal="body_exited" from="AttackArea" to="." method="_on_AttackArea_body_exited"]
