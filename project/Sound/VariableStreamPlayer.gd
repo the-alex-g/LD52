@@ -15,4 +15,4 @@ func _ready()->void:
 func play(from:=0.0)->void:
 	pitch_scale = _original_pitch + max(0.0, lerp(-pitch_variance, pitch_variance, randf()))
 	volume_db = _original_volume + lerp(-volume_variance, volume_variance, randf())
-	.play()
+	.play(from)
