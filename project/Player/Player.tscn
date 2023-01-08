@@ -80,3 +80,6 @@ stream = ExtResource( 5 )
 
 [node name="ShieldCooldownTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="HealCooldownTimer" type="Timer" parent="."]
+one_shot = true

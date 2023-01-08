@@ -14,12 +14,12 @@ export var frame_path := "res://Pawns/Spriteframes/PawnFrames.tres"
 
 var _state = ActionState.WANDER
 var target : Node2D
-var player : Node2D
 export var good := true setget _set_good
 
 onready var _cooldown_timer : Timer = $AttackCooldownTimer
 onready var _attack_area : Area2D = $AttackArea
 onready var _sprite : AnimatedSprite = $Sprite
+onready var _max_health := health
 
 
 func _ready()->void:
@@ -216,3 +216,8 @@ func _get_attack_damage()->int:
 func _on_Sprite_animation_finished()->void:
 	if _sprite.animation == "Attack":
 		_sprite.play("Idle")
+
+
+func release()->void:
+	health = _max_health
+	hit(0)

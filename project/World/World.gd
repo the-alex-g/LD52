@@ -11,9 +11,19 @@ func _ready()->void:
 	
 	Jukebox.play_main()
 	
+	# warning-ignore:return_value_discarded
+	PawnHandler.connect("release_pawn", self, "_on_PawnHandler_release_pawn")
+	
 	for _i in 64:
 		_path_follow.unit_offset = randf()
 		_path_follow.rotation = randf() * TAU
 		var pawn = preload("res://Pawns/StandardPawn.tscn").instance()
 		pawn.position = _standard_spawn_point.global_position
 		_enemy_container.add_child(pawn)
+
+
+func _on_PawnHandler_release_pawn()->void:
+	for pawn in _enemy_container.get_children():
+		if not pawn.good:
+			pawn.release()
+			break

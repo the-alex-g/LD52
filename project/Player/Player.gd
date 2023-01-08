@@ -4,15 +4,18 @@ extends KinematicBody2D
 export var speed := 210.0
 export var cooldown_time := 1.0
 export var shield_cooldown_time := 4.0
+export var heal_cooldown_time := 4.0
 export var min_damage := 7
 export var max_damage := 20
 
 var _can_shoot := true
 var _can_create_shield := true
+var _can_heal := true
 var good := false
 
 onready var _cooldown_timer : Timer = $AttackCooldownTimer
 onready var _shield_timer : Timer = $ShieldCooldownTimer
+onready var _heal_timer : Timer = $HealCooldownTimer
 onready var _sprite : AnimatedSprite = $AnimatedSprite
 
 
@@ -35,6 +38,9 @@ func _physics_process(delta:float)->void:
 	
 	if Input.is_action_just_pressed("create_shield") and _can_create_shield:
 		_create_shield()
+	
+	if Input.is_action_just_pressed("heal") and _can_heal:
+		_heal()
 	
 	# warning-ignore:return_value_discarded
 	move_and_collide(direction * speed * delta)
@@ -68,6 +74,14 @@ func _create_shield()->void:
 	
 	yield(_shield_timer, "timeout")
 	_can_create_shield = true
+
+
+func _heal()->void:
+	_can_heal = false
+	_heal_timer.start(heal_cooldown_time)
+	PawnHandler.heal()
+	yield(_heal_timer, "timeout")
+	_can_heal = true
 
 
 func hit(damage:int)->void:
